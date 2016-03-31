@@ -1,0 +1,27 @@
+AirQualityIntent what's' the air quality for {zip}
+AirQualityIntent what's' the air quality in {zip}
+AirQualityIntent what's' air quality in zip code {zip}
+AirQualityIntent what's' air quality for zip code {zip}
+AirQualityIntent what is the air quality for zip code {zip}
+AirQualityIntent what is the air quality in zip code {zip}
+AirQualityIntent what is the air quality in {zip}
+AirQualityIntent what is the air rating for {zip}
+AirQualityIntent get me the air quality in zip code {zip}
+AirQualityIntent get me the air quality in {zip}
+AirQualityIntent get me the air quality for {zip}
+AirQualityIntent get me the air quality for zip code {zip}
+AirQualityIntent look up {zip}
+AirQualityIntent find {zip}
+AirQualityIntent tell me the air quality in {zip}
+AirQualityIntent tell me the air quality in zip code {zip}
+AirQualityIntent tell me the air quality for {zip}
+AirQualityIntent tell me the air quality for zip code {zip}
+AirQualityIntent give me the air quality in zip code {zip}
+AirQualityIntent give me the air quality in {zip}
+AirQualityIntent give me the air quality for {zip}
+AirQualityIntent give me the air quality for zip code {zip}
+AirQualityIntent gimme the air quality in zip code {zip}
+AirQualityIntent gimme me the air quality in {zip}
+AirQualityIntent zip {zip}
+AirQualityIntent zip code {zip}
+AirQualityIntent {zip}

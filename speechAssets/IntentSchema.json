@@ -1,0 +1,22 @@
+{
+  "intents": [
+    {
+      "intent": "AirQualityIntent",
+      "slots": [
+      {
+        "name" : "zip",
+        "type": "AMAZON.NUMBER"
+      }
+     ]
+    },
+   {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
