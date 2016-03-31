@@ -1,4 +1,6 @@
 #Air Quality - an Alexa Skill
+![icon](https://github.com/hcamdclk8/AirQuality/blob/master/Images/aq_s.png)
+
 A simple [AWS Lambda](http://aws.amazon.com/lambda) function that provides the air quality ratings for US cities based on a 5 digit zip code provided to Alexa.
 
 ## Key Feature
