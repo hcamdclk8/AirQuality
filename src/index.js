@@ -37,7 +37,7 @@ AirQualityHelper.prototype.constructor = AirQualityHelper;
 AirQualityHelper.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     var speechText = {
         speech:  "<speak>Welcome to Air Quality Meter. You can ask a question like, "
-                 +"What is the air quality rating in zip code <say-as interpret-as='digits'>98105</say-as> ? or simply say the 5 digit zip code. "
+                 +"What is the air quality rating in zip code <say-as interpret-as='digits'> 98105 </say-as> or simply say the 5 digit zip code. "
                  +"Which zip code would you like air quality information for?</speak>",
         type:   AlexaSkill.speechOutputType.SSML
     },
@@ -60,6 +60,7 @@ AirQualityHelper.prototype.intentHandlers = {
     "AirQualityIntent": function (intent, session, response) {
         
         var zip = intent.slots.zip.value; ///user input for zip code
+        //var zip = 94101;
         var endpoint = 'http://api.breezometer.com/baqi/';
         var queryString = '?location=' + zip; //'location=seattle,+wa,+united+states';
         var tokenKey = '238c76b53931458d98fa2c71a718ab54';
@@ -71,12 +72,12 @@ AirQualityHelper.prototype.intentHandlers = {
         
         http.get(apiRequest, function (res) {
             var aqResponseString = '';
-            console.log('Status Code: ' + res.statusCode);
+            console.log('Status Code: ' + res.statusCode + ' = ' + res.statusMessage);
 
             // validate API connection    
             if (res.statusCode != 200) {
                 
-                var speechOutput = "Sorry, the Air Quality service is experiencing a problem. Please try again later";
+                var speechOutput = "Sorry, the zip code provided is not currently supported. Please try another zip code.";
                 response.tell(speechOutput);
                 
             } else {
@@ -96,7 +97,7 @@ AirQualityHelper.prototype.intentHandlers = {
                             } else {
                                 
                             console.log('The air quality is rated ' + output[1] + '.');  /// add zip code user provided
-                            var speechOutput = 'The air quality in zip code ' + "<say-as interpret-as='digits'>" + zip + "</say-as>" + ' is rated ' + output[1] + '.';  
+                            var speechOutput = 'The air quality in zip code ' + "<say-as interpret-as='digits'> " + zip + " </say-as>" + ' is rated ' + output[1] + '.';  
                             response.tell(speechOutput);
                                 
                             }
@@ -128,7 +129,7 @@ AirQualityHelper.prototype.intentHandlers = {
         var speechText = {
             speech:  "<speak>I can provide you the air quality rating for a location simply by providing a 5 digit zip code. "
                     +"You may ask something like, "
-                    +"What is the air quality in zip code <say-as interpret-as='digits'>98105</say-as> ? or simply say the 5 digit zip code..."
+                    +"What is the air quality in zip code <say-as interpret-as='digits'> 98105 </say-as> or simply say the 5 digit zip code..."
                     +"Which zip code would you like air quality information for?</speak>",
             type:   AlexaSkill.speechOutputType.SSML
         },
