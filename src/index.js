@@ -84,30 +84,34 @@ AirQualityHelper.prototype.intentHandlers = {
                         res.on('data', function (data) {
                             aqResponseString += data;
 
-                            // split string into array by using space as delimiter
-                            var output = aqResponseString.split(' ');
-                            
-                            // test if zip code is valid or not 
-                                console.log(output[1]);
-                            if (output[1] === 'false,') {
-                                
-                                var speechOutput = "Sorry, that zip code could not be found, or data is not available for the zip code provided. Please try a different zip code.";
-                                response.tell(speechOutput);
-                                
-                            } else {
-                                
-                            console.log('The air quality is rated ' + output[1] + '.');  /// add zip code user provided
-                            var speechOutput = 'The air quality in zip code ' + "<say-as interpret-as='digits'> " + zip + " </say-as>" + ' is rated ' + output[1] + '.';  
-                            response.tell(speechOutput);
-                                
-                            }
-
                         });
                     }
 
             res.on('end', function () {
                 var aqResponseObject = JSON.parse(aqResponseString);
-                console.log(aqResponseObject);
+                console.log(aqResponseObject.breezometer_description);
+                                            // split string into array by using space as delimiter
+                var str = aqResponseObject.breezometer_description;
+                var output = str.split(' ');
+
+                // test if zip code is valid or not 
+                    console.log(output[0]);
+                if (output[0] === 'false,') {
+
+                    var speechOutput = "Sorry, that zip code could not be found, or data is not available for the zip code provided. Please try a different zip code.";
+                    response.tell(speechOutput);
+
+                } else {
+
+                console.log('The air quality is rated ' + output[0] + '.');  /// add zip code user provided
+
+                var speechText = {
+                    speech:  "<speak>The air quality in zip code <say-as interpret-as='digits'> " + zip + " </say-as> is rated " + output[0] + ".</speak>",
+                    type:   AlexaSkill.speechOutputType.SSML
+                }
+                response.tell(speechText);
+
+                }
             });
         }).on('error', function (e) {
             console.log("Communications error: " + e.message);
